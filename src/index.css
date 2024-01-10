@@ -28,3 +28,8 @@ body{
   font-family: 'Montserrat', sans-serif;
   font-family: 'Roboto Mono', monospace;
 }
+
+
+html{
+  scroll-behavior: smooth;
+}

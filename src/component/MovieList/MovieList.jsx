@@ -3,12 +3,11 @@ import React, { useEffect } from "react";
 import _ from 'lodash';
 
 import "./MovieList.css";
-import Fire from "../../assets/fire.png";
 import MovieCard from "./MovieCard";
 import { useState } from "react";
 import FilterGroup from "./FilterGroup";
 
-const MovieList = () => {
+const MovieList = ({type,title,emoji}) => {
   // useEffect(() => {
   //     fetch("https://api.themoviedb.org/3/movie/popular?api_key=b69caf0b8190dd45dfe61e38c12dba36")
   //         .then((res) => res.json())
@@ -49,7 +48,7 @@ const MovieList = () => {
 
   const fetchMovies = async () => {
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=b69caf0b8190dd45dfe61e38c12dba36"
+      `https://api.themoviedb.org/3/movie/${type}?api_key=b69caf0b8190dd45dfe61e38c12dba36`
     );
     const data = await response.json();
     Setmovies(data.results);
@@ -88,11 +87,11 @@ const handleSort=e=>{
 
 
   return (
-    <section className="movie_list">
+    <section className="movie_list" id={type}>
       <header className="movie_list_header">
         <h2 className="movie_list_heading">
-          Popular
-          <img src={Fire} alt="fire" className="navbar_emoji" />
+          {title}
+          <img src={emoji} alt={`${emoji}`} className="navbar_emoji" />
         </h2>
 
         <div className="movie_list_fs">
